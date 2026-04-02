@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquear arquivos desnecessários para crawlers
+Disallow: /favicon-case.png
+Disallow: /foto-case.png
+Disallow: /simpli-branco.svg
+
+Sitemap: https://casesolucoesemlimpeza.com.br/sitemap.xml
