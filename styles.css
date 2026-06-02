@@ -893,6 +893,84 @@ body {
 .faq__item dd strong { color: var(--blue-600); font-weight: 600; }
 
 /* ===== INSTAGRAM ===== */
+/* ===== VÍDEOS / YOUTUBE ===== */
+.videos {
+  background: var(--slate-100);
+  padding: var(--section-py) 0;
+}
+
+.videos__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.videos__header {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.videos__header h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--slate-900);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.videos__sub {
+  margin-top: 16px;
+  font-size: 1rem;
+  color: var(--slate-500);
+  line-height: 1.7;
+}
+
+.videos__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.video-card {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--slate-900);
+  box-shadow: var(--shadow-md);
+}
+
+.video-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.videos__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  background: #ff0000;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.videos__btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
 .instagram {
   background: var(--slate-900);
   padding: var(--section-py) 0;
@@ -1183,6 +1261,8 @@ body {
   .results__layout { grid-template-columns: 1fr; }
 
   .faq__inner { grid-template-columns: 1fr; gap: 48px; }
+
+  .videos__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* — Tablet portrait / Mobile grande (768px) — */
@@ -1221,6 +1301,10 @@ body {
   .testimonial--featured { padding: 36px 0; }
   .testimonial--featured p { font-size: 1rem; }
   .testimonials__row { grid-template-columns: 1fr; }
+
+  /* Vídeos */
+  .videos__grid { gap: 14px; }
+  .videos__btn { width: 100%; justify-content: center; }
 
   /* Instagram */
   .instagram__handle-link { font-size: 1.15rem; }
