@@ -314,12 +314,20 @@
       <a href="/" class="logo" aria-label="Casé Soluções em Limpeza - Início">
         <img src="logo.png" alt="Casé Soluções em Limpeza" height="48" />
       </a>
-      <nav class="header__nav" aria-label="Navegação principal">
+      <nav class="header__nav" id="header-nav" aria-label="Navegação principal">
         <a href="#servicos">Serviços</a>
         <a href="#resultados">Resultados</a>
+        <a href="#videos">Vídeos</a>
         <a href="#faq">FAQ</a>
-        <a href="#contato" class="btn btn--primary btn--sm">Fale Conosco</a>
       </nav>
+      <div class="header__actions">
+        <a href="#contato" class="btn btn--primary btn--sm">Fale Conosco</a>
+        <button class="header__toggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="header-nav">
+          <span class="header__toggle-bar"></span>
+          <span class="header__toggle-bar"></span>
+          <span class="header__toggle-bar"></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -876,6 +884,40 @@
     </svg>
     <span>WhatsApp</span>
   </a>
+
+  <script>
+    (function () {
+      // ===== Menu hambúrguer (mobile) =====
+      var header = document.querySelector('.header');
+      var toggle = document.querySelector('.header__toggle');
+      var nav = document.getElementById('header-nav');
+      if (header && toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var open = header.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          toggle.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+        });
+        nav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            header.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+          });
+        });
+      }
+
+      // ===== WhatsApp flutuante: oculta no CTA final (que já tem botão de WhatsApp) =====
+      var wa = document.querySelector('.whatsapp-float');
+      var ctaFinal = document.querySelector('.cta-final');
+      if (wa && ctaFinal && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            wa.classList.toggle('is-hidden', entry.isIntersecting);
+          });
+        }, { threshold: 0.2 }).observe(ctaFinal);
+      }
+    })();
+  </script>
 
 </body>
 </html>

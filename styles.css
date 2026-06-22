@@ -44,6 +44,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* compensa o header fixo (67px) ao navegar por âncoras */
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -193,6 +195,43 @@ body {
 }
 
 .header__nav a:not(.btn):hover { color: var(--slate-900); }
+
+/* empurra nav + ações para a direita (desktop) */
+.header__nav { margin-left: auto; }
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botão hambúrguer — escondido no desktop */
+.header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--slate-800);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* anima para "X" quando aberto */
+.header.is-open .header__toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.header.is-open .header__toggle-bar:nth-child(2) { opacity: 0; }
+.header.is-open .header__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ===== HERO ===== */
 .hero {
@@ -1240,6 +1279,14 @@ body {
   box-shadow: 0 6px 28px rgba(0,0,0,0.25);
 }
 
+/* oculto ao chegar no CTA final (evita sobrepor os botões e duplicar o WhatsApp) */
+.whatsapp-float.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  pointer-events: none;
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* — Tablet landscape (1024px) — */
@@ -1269,10 +1316,45 @@ body {
 @media (max-width: 768px) {
   :root { --section-py: 56px; }
 
-  /* Header */
+  /* Header — menu vira dropdown acionado pelo hambúrguer */
   .header { padding: 12px 0; }
-  .header__nav a:not(.btn) { display: none; }
   .logo img { height: 40px; }
+
+  .header__toggle { display: flex; }
+
+  .header__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--slate-200);
+    box-shadow: var(--shadow-md);
+    padding: 6px 24px 14px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .header.is-open .header__nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .header__nav a:not(.btn) {
+    display: block;
+    padding: 14px 4px;
+    font-size: 1rem;
+    color: var(--slate-700);
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .header__nav a:not(.btn):last-child { border-bottom: none; }
 
   /* Hero */
   .hero { padding: 64px 0 56px; }
@@ -1302,8 +1384,23 @@ body {
   .testimonial--featured p { font-size: 1rem; }
   .testimonials__row { grid-template-columns: 1fr; }
 
-  /* Vídeos */
-  .videos__grid { gap: 14px; }
+  /* Vídeos — Shorts verticais viram carrossel horizontal com snap (swipe) */
+  .videos__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+    padding-bottom: 6px;
+  }
+  .videos__grid::-webkit-scrollbar { display: none; }
+
+  .video-card {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+  }
+
   .videos__btn { width: 100%; justify-content: center; }
 
   /* Instagram */
@@ -1319,9 +1416,9 @@ body {
   /* Footer */
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
 
-  /* WhatsApp */
+  /* WhatsApp — vira ícone compacto e tucado no canto p/ cobrir menos os CTAs */
   .whatsapp-float span { display: none; }
-  .whatsapp-float { padding: 14px; border-radius: 50%; }
+  .whatsapp-float { padding: 13px; border-radius: 50%; bottom: 16px; right: 16px; }
 }
 
 /* — Mobile pequeno (480px) — */
@@ -1334,7 +1431,12 @@ body {
   .hero { padding: 56px 0 48px; }
   .hero__content h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); letter-spacing: -0.02em; }
   .hero__aside-num { font-size: 2rem; }
-  .hero__eyebrow { font-size: 0.65rem; }
+  .hero__eyebrow { font-size: 0.72rem; }
+
+  /* Rótulos/eyebrows: legibilidade mínima no mobile */
+  .problem__num { font-size: 0.72rem; }
+  .plan__tag, .plan__highlight-label { font-size: 0.7rem; }
+  .hero__aside-label { font-size: 0.72rem; }
 
   /* Problem */
   .problem__item { padding: 18px 16px; gap: 8px; }
@@ -1382,4 +1484,12 @@ body {
   .instagram__btn { min-height: 48px; }
   .whatsapp-float { min-height: 52px; min-width: 52px; }
   .faq__item dt { padding: 4px 0; cursor: pointer; }
+
+  /* Área de toque mínima p/ links de texto de contato e rodapé */
+  .cta-final__contact a,
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 }
