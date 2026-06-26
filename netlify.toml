@@ -1,0 +1,29 @@
+# Rewrites apenas para o funil de lançamento.
+# As páginas físicas são .html; estes rewrites (status 200) permitem acessar
+# também as URLs sem extensão (ex.: /lancamento/obrigado-isca) sem dar 404.
+# Não afeta o site principal (só casa caminhos sob /lancamento/).
+
+[[redirects]]
+  from = "/lancamento/isca"
+  to = "/lancamento/isca.html"
+  status = 200
+
+[[redirects]]
+  from = "/lancamento/cpl"
+  to = "/lancamento/cpl.html"
+  status = 200
+
+[[redirects]]
+  from = "/lancamento/obrigado-isca"
+  to = "/lancamento/obrigado-isca.html"
+  status = 200
+
+[[redirects]]
+  from = "/lancamento/obrigado-cpl"
+  to = "/lancamento/obrigado-cpl.html"
+  status = 200
+
+[[redirects]]
+  from = "/lancamento/obrigado-lancamento"
+  to = "/lancamento/obrigado-lancamento.html"
+  status = 200
