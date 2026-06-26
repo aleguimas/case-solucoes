@@ -1,0 +1,383 @@
+/* isca.css */
+
+.hero {
+    height: 100vh;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(1, 30, 49, 0.95) 0%, rgba(1, 30, 49, 0.4) 100%), url('../imagens/hero.png') center/cover no-repeat;
+    z-index: 0;
+}
+
+.hero-container {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 900px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--color-secondary);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.badge-dark {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-primary);
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--color-white);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2.5rem;
+}
+
+.hero-form-box {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.horizontal-form {
+    margin-top: 0;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+}
+
+.horizontal-form .form-title {
+    display: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0;
+    align-items: stretch;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-row .input-wrapper, 
+.form-row .form-control {
+    height: 100%;
+}
+
+.form-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.form-footer-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.horizontal-form .lgpd-checkbox {
+    margin: 0;
+}
+
+.form-title {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.ebook-mockup-placeholder {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1.4;
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    border-radius: 3px 12px 12px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 
+        -15px 25px 40px rgba(0,0,0,0.4),
+        inset -5px 0 15px rgba(0,0,0,0.3),
+        inset 10px 0 10px rgba(255,255,255,0.1);
+    transform: perspective(1000px) rotateY(-20deg) rotateX(5deg);
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.4s ease;
+}
+
+.ebook-mockup-placeholder:hover {
+    transform: perspective(1000px) rotateY(-10deg) rotateX(0deg) scale(1.02);
+}
+
+.ebook-mockup-placeholder::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255,255,255,0.2);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.ebook-mockup-placeholder span {
+    padding: 2rem;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Problema */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.problem-card {
+    text-align: center;
+}
+
+.icon-box {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Descoberta */
+.container-flex {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.descoberta-image, .autoridade-foto {
+    flex: 1;
+}
+
+.descoberta-content, .autoridade-content {
+    flex: 1;
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background-color: var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.check-list {
+    margin-top: 2rem;
+}
+
+.check-list li {
+    font-size: 1.125rem;
+    padding-left: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Autoridade */
+.align-center {
+    align-items: center;
+}
+
+.autoridade-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.foto-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background-color: var(--color-border);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.foto-placeholder.circular {
+    border-radius: 50%;
+}
+
+/* CTA Final */
+.cta-final {
+    background-color: var(--color-primary-light);
+    color: var(--color-white);
+    padding: 6rem 0;
+}
+
+.cta-final .section-title {
+    color: var(--color-white);
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+    }
+    
+    .container-flex {
+        flex-direction: column;
+    }
+    
+    .descoberta-image, .autoridade-foto {
+        width: 100%;
+        order: -1;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-footer-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-form-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Estilos do novo layout vertical do hero */
+.hero-logo-center {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 275px;
+    z-index: 10;
+}
+
+.hero-form-vertical {
+    margin-top: 1.5rem;
+    max-width: 450px;
+}
+
+.form-cta-text {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-white);
+}
+
+.form-control-dark {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+    font-family: var(--font-body);
+}
+
+.form-control-dark::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-control-dark:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+}
+
+.form-btn-cyan {
+    background-color: #5ce1e6;
+    color: #011e31;
+    width: 100%;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-sm);
+    margin-top: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.form-btn-cyan:hover {
+    background-color: #4bc5ca;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 225, 230, 0.4);
+}
