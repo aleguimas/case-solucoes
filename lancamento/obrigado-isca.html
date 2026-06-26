@@ -108,6 +108,43 @@
     </style>
 </head>
 <body>
+    <style>
+        .badge-confirm {
+            display: inline-block;
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+            border: 1px solid rgba(37, 211, 102, 0.4);
+            padding: 0.4rem 1.1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.25rem;
+        }
+        .single-cta {
+            background: rgba(37, 211, 102, 0.07);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: var(--radius-md);
+            padding: 2.75rem 2rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .cta-icon { font-size: 3.5rem; line-height: 1; margin-bottom: 1rem; }
+        .cta-title { color: var(--color-white); font-size: 1.6rem; margin-bottom: 1rem; }
+        .cta-text {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            max-width: 520px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        .btn-cta-big { font-size: 1.1rem; padding: 1.1rem 2.2rem; border-radius: var(--radius-sm); }
+        .cta-microcopy { color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; margin-top: 1rem; }
+        @media (max-width: 768px) {
+            .single-cta { padding: 2rem 1.25rem; }
+            .cta-title { font-size: 1.35rem; }
+        }
+    </style>
 
     <div class="obrigado-premium">
         <!-- Logomarca centralizada acima e com o mesmo tamanho (275px) da página de isca -->
@@ -115,32 +152,20 @@
         
         <div class="premium-card">
             
-            <h1 class="premium-title">Falta muito pouco!</h1>
-            <p class="premium-subtitle">Você está a 2 cliques de transformar a limpeza do seu restaurante.</p>
+            <span class="badge-confirm">✅ Tudo certo!</span>
+            <h1 class="premium-title">Inscrição confirmada! 🎉</h1>
+            <p class="premium-subtitle">Seu material já está liberado. Agora falta só <strong>1 passo</strong> para você não perder nenhum aviso, dica ou material novo:</p>
             
             <div class="steps-container">
-                <!-- Passo 1: Download -->
-                <div class="step-box">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Baixe seu E-book Gratuito</h3>
-                        <p>O arquivo PDF está pronto e liberado. Clique no botão abaixo para salvar no seu celular ou computador imediatamente.</p>
-                        <a href="#" class="btn-cyan">
-                            <span>📥</span> BAIXAR EBOOK AGORA
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Passo 2: WhatsApp -->
-                <div class="step-box" style="border-color: rgba(37, 211, 102, 0.3);">
-                    <div class="step-number" style="color: rgba(37, 211, 102, 0.3);">2</div>
-                    <div class="step-content">
-                        <h3>Entre no Grupo Exclusivo (Recomendado)</h3>
-                        <p>Participe do nosso grupo VIP no WhatsApp para receber avisos, mais materiais gratuitos e tirar dúvidas diretamente.</p>
-                        <a href="#" class="btn btn-whatsapp pulse-animation" style="border-radius: var(--radius-sm);">
-                            <span class="wpp-icon">📱</span> ENTRAR NO GRUPO VIP
-                        </a>
-                    </div>
+                <!-- Chamada única: Grupo VIP no WhatsApp -->
+                <div class="single-cta">
+                    <div class="cta-icon">📱</div>
+                    <h2 class="cta-title">Entre no nosso Grupo VIP no WhatsApp</h2>
+                    <p class="cta-text">É no grupo que liberamos avisos importantes, materiais extras gratuitos e dicas práticas de higiene e segurança alimentar — e onde você tira dúvidas direto com a nossa equipe. Não fique de fora.</p>
+                    <a href="#" class="btn btn-whatsapp pulse-animation btn-cta-big">
+                        <span class="wpp-icon">📱</span> ENTRAR NO GRUPO VIP AGORA
+                    </a>
+                    <p class="cta-microcopy">Grupo gratuito · Você pode sair quando quiser</p>
                 </div>
             </div>
 
