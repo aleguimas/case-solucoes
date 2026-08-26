@@ -1,2 +1,6 @@
 .DS_Store
 Thumbs.db
+
+# Fonte PHP do funil "Limpeza Sem Mistério" (contém credenciais em conexao.php e admin/)
+# Nunca deve ir para o repo nem para o deploy da Netlify
+lp_limpezasemmisterios/
